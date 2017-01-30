@@ -3,10 +3,10 @@ pdict
 
 Pdict is a light-weight implementation of persistent dictionary designed to store large collections
 of key-value pairs for fast lookup.
-As such, it has a bunch of useful properties, such as fast reads, space-efficient file format and
+As such, it has a bunch of useful properties, such as [fast reads](#reads), [space-efficient file format](#file-size) and
 support for json objects.
 
-Pdict supports Python 2 and 3.
+Pdict works with Python 2 and 3.
 
 
 Minimal usage example:
@@ -45,9 +45,9 @@ $ python -m unittest pdict.tests.test_pdict
 Limitations
 -----------
 * deletions are not supported
-* both reads and writes are not thread-safe
-* maximum file size is 4.2Gb
-* key/value length up to 64KiB
+* reads and writes are not thread-safe
+* maximum file size is 4.2Gib
+* key/value length up to 64Kib
 * no data recovery mechanisms
 
 Usage Examples
@@ -77,3 +77,22 @@ Usage Examples
 >>> db['new york']
 >>> (40.7141667, -74.0063889)
 ```
+
+
+Benchmarks
+----------
+
+Environment:
+  
+    Python 2.7.6
+    Debian Linux Mint 17.3 64-bit
+    Intel i5-3210M CPU @ 2.50GHz x 2, 2.3Gib RAM
+
+### Reads
+
+![benchmark read](benchmarks/read-speed.png)
+
+
+### File size
+
+![benchmark read](benchmarks/read-disk.png)
