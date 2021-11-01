@@ -71,12 +71,14 @@ class Test(unittest.TestCase):
         d = pdict.create(db_file, 100)
         d['k'] = 'v'
         d['k2'] = 'v2'
+        d['võti'] = 'väärtus'
         d.close()
 
         d = pdict.Pdict(db_file)
 
         self.assertTrue('k' in d)
         self.assertTrue('k2' in d)
+        self.assertTrue('võti' in d)
 
         self.assertFalse('random' in d)
         self.assertFalse('other' in d)
@@ -127,6 +129,8 @@ class Test(unittest.TestCase):
         self.assertEqual('v', d['k'])
         d['k'] = 'vv'
         self.assertEqual('vv', d['k'])
+        d['võti'] = 'väärtus'
+        self.assertEqual('väärtus', d['võti'])
 
         self.assertEqual(d.capacity, 100)
 
