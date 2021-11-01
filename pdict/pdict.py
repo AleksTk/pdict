@@ -261,7 +261,7 @@ def serialize(value):
 
 
 def deserialize(value):
-    return msgpack_unpackb(value, encoding='utf-8')
+    return msgpack_unpackb(value, raw=False)
 
 
 def compute_hash(key):
