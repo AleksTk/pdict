@@ -66,6 +66,22 @@ class Test(unittest.TestCase):
         self.assertEqual('v2', d['k2'])
         d.close()
 
+    def test_contains(self):
+        db_file = self.get_db_file()
+        d = pdict.create(db_file, 100)
+        d['k'] = 'v'
+        d['k2'] = 'v2'
+        d.close()
+
+        d = pdict.Pdict(db_file)
+
+        self.assertTrue('k' in d)
+        self.assertTrue('k2' in d)
+
+        self.assertFalse('random' in d)
+        self.assertFalse('other' in d)
+        d.close()
+
     def test_binary(self):
         db_file = self.get_db_file()
         d = pdict.create(db_file, 5)

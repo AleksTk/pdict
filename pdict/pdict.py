@@ -80,6 +80,13 @@ class BaseDict(object):
         except KeyError:
             return default
 
+    def __contains__(self, item):
+        try:
+            self.__getitem__(item)
+            return True
+        except KeyError:
+            return False
+
     def __len__(self):
         return self._size
 
